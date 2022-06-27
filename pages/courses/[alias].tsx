@@ -19,13 +19,12 @@ client.defaults.raxConfig = {
   noResponseRetries: 10,
   onRetryAttempt: (err) => {
     const retryAttempt = rax.getConfig(err)!.currentRetryAttempt!;
-    console.log(
-      `Retry attempt #${retryAttempt}. Error: ${err.code}: ${err.message}`
-    );
+    // console.log(
+    //   `Retry attempt #${retryAttempt}. Error: ${err.code}: ${err.message}`
+    // );
   },
 };
 const interceptorId = rax.attach(client);
-console.log(interceptorId);
 const firstCategory = 0;
 
 function Course({ menu, products, page }: CourseProps): JSX.Element {
@@ -38,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
     JSON.stringify({ firstCategory: 0 })
   );
-  console.log(menu.flatMap((m) => m.pages.map((p) => "/courses/" + p.alias)));
+  // console.log(menu.flatMap((m) => m.pages.map((p) => "/courses/" + p.alias)));
   return {
     paths: menu.flatMap((m) => m.pages.map((p) => "/courses/" + p.alias)),
     fallback: true,

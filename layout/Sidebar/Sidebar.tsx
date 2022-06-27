@@ -1,11 +1,11 @@
-import { SidebarProps } from "./Sidebar.props"
-import styles from "./Sidebar.module.css"
+import { SidebarProps } from "./Sidebar.props";
+import { Menu } from "../Menu/Menu";
+import styles from "./Sidebar.module.css";
 
 export const Sidebar = ({ ...props }: SidebarProps): JSX.Element => {
-    return (
-        <div {...props}>
-         SideBar
-        </div>
-    )
-
-}
+  return (
+    <div {...props}>
+      <Menu />
+    </div>
+  );
+};

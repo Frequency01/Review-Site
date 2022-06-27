@@ -24,15 +24,6 @@ function Home({ menu }: HomeProps): JSX.Element {
         Popa
       </Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
-      <>
-        {menu.map((category) => {
-          return (
-            <li key={category._id.secondCategory}>
-              {category._id.secondCategory}
-            </li>
-          );
-        })}
-      </>
     </>
   );
 }
@@ -45,7 +36,6 @@ export const getStaticProps: GetStaticProps = async () => {
     JSON.stringify({ firstCategory: 0 }),
     { headers: { "Content-Type": "application/json" } }
   );
-  console.log("BLA");
   return {
     props: {
       menu,
