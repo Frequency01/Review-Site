@@ -9,7 +9,7 @@ import {
 } from "../../interfaces/page.interface";
 import { ParsedUrlQuery } from "querystring";
 import { ProductModel } from "../../interfaces/producst.interface";
-
+import { TopPageComponent } from "../../page-components";
 import * as rax from "retry-axios";
 import { firstLevelMenu } from "../../helpers/helpers";
 
@@ -30,10 +30,16 @@ client.defaults.raxConfig = {
 };
 const interceptorId = rax.attach(client);
 
-function Course({ menu, products, page }: CourseProps): JSX.Element {
-  return <>{products && products.length}</>;
+function TopPage({ firstCategory, products, page }: TopPageProps): JSX.Element {
+  return (
+    <TopPageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  );
 }
-export default withLayout(Course);
+export default withLayout(TopPage);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
@@ -52,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   params,
 }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
@@ -104,7 +110,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({
   }
 };
 
-interface CourseProps extends Record<string, unknown> {
+interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopLevelCategory;
   page: TopPageModel;
