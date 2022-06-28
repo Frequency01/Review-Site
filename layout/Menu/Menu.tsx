@@ -1,45 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/app.context";
-import {
-  FirstLevelMenuItem,
-  firstLevelMenu,
-  PageItem,
-} from "../../interfaces/menu.interface";
+import { FirstLevelMenuItem, PageItem } from "../../interfaces/menu.interface";
 import cn from "classnames";
-import CoursesIcon from "./icons/courses.svg";
-import ServicesIcon from "./icons/services.svg";
-import BookIcon from "./icons/books.svg";
-import ProductIcon from "./icons/product.svg";
-import { TopLevelCategory } from "../../interfaces/page.interface";
 import { useRouter } from "next/router";
 import styles from "./Menu.module.css";
-
-const firstLevelMenu: firstLevelMenu[] = [
-  {
-    route: "courses",
-    name: "Курсы",
-    icon: <CoursesIcon />,
-    id: TopLevelCategory.Courses,
-  },
-  {
-    route: "services",
-    name: "Сервисы",
-    icon: <ServicesIcon />,
-    id: TopLevelCategory.Services,
-  },
-  {
-    route: "book",
-    name: "Книги",
-    icon: <BookIcon />,
-    id: TopLevelCategory.Books,
-  },
-  {
-    route: "product",
-    name: "Продукты",
-    icon: <ProductIcon />,
-    id: TopLevelCategory.Products,
-  },
-];
+import { firstLevelMenu } from "../../helpers/helpers";
 
 export const Menu = (): JSX.Element => {
   const { menu, firstCategory, setMenu } = useContext(AppContext);
