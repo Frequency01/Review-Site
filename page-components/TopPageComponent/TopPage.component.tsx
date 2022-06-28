@@ -2,6 +2,9 @@ import { TopPageComponentProps } from "./TopPage.component.props";
 import cn from "classnames";
 import styles from "./TopPage.component.module.css";
 import { Tag, Htag, Card } from "../../components";
+import { HhData } from "../../components/Hhdata/Hhdata";
+import { TopLevelCategory } from "../../interfaces/page.interface";
+import { Advantages } from "../../components/Advantages/Advantages";
 
 export const TopPageComponent = ({
   page,
@@ -29,13 +32,15 @@ export const TopPageComponent = ({
           hh.ru
         </Tag>
       </div>
-      <div className={styles.blockHH}>
-        {" "}
-        <Card className={styles.numberOfVacancy}>
-          <div className={styles.statTitle}>Всего вакансий</div>
-          <div className={styles.statCount}>{page.hh?.count}</div>
-        </Card>
-      </div>
+      {firstCategory == TopLevelCategory.Courses && page.hh && (
+        <HhData {...page.hh} />
+      )}
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Приемущества</Htag>
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
     </div>
   );
 };

@@ -13,6 +13,8 @@ export const Card = ({
         [styles.blue]: background == "blue",
         [styles.white]: background == "white",
       })}
-    ></div>
+    >
+      {children}
+    </div>
   );
 };
