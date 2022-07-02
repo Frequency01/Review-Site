@@ -6,12 +6,14 @@ export const Advantages = ({ advantages }: AdvantagesProps): JSX.Element => {
   return (
     <>
       {advantages.map((advantage) => {
-        <div key={advantage._id} className={styles.advantageContainer}>
-          <CheckIcon />
-          <div>{advantage.title}</div>
-          <hr className={styles.line} />
-          <div>{advantage.description}</div>
-        </div>;
+        return (
+          <div key={advantage._id} className={styles.advantageContainer}>
+            <CheckIcon />
+            <div className={styles.title}>{advantage.title}</div>
+            <hr className={styles.line} />
+            <div>{advantage.description}</div>
+          </div>
+        );
       })}
     </>
   );
