@@ -2,7 +2,7 @@ import { TopPageComponentProps } from "./TopPage.component.props";
 import cn from "classnames";
 import styles from "./TopPage.component.module.css";
 import { sortReducer } from "./sort.reducer";
-import { Tag, Htag, Sort } from "../../components";
+import { Tag, Htag, Sort, Product } from "../../components";
 import { HhData } from "../../components/Hhdata/Hhdata";
 import { TopLevelCategory } from "../../interfaces/page.interface";
 import { Advantages } from "../../components/Advantages/Advantages";
@@ -32,9 +32,9 @@ export const TopPageComponent = ({
         <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {products &&
-          products.map((product) => (
-            <div key={product._id}>{product.title}</div>
+        {sortedProducts &&
+          sortedProducts.map((product) => (
+            <Product key={product._id} product={product} />
           ))}
       </div>
       <div className={styles.hhTitle}>
